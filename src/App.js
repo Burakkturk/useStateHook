@@ -1,23 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import Form from './components/1-forms/Form';
+import KeyboardClipboards from './components/2-keyboardClipboards/KeyboardClipboards';
+import MouseEvents from './components/3-mouseEvents/MouseEvents';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <KeyboardClipboards/>
+    <MouseEvents/>
+    <Form/>
     </div>
   );
 }
