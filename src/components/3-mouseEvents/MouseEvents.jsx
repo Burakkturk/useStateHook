@@ -1,7 +1,7 @@
 
 const MouseEvents = () => {
   return (
-    <div>MouseEvents</div>
+    <div></div>
   )
 }
 

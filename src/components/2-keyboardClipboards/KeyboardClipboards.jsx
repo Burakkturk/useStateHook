@@ -2,7 +2,7 @@
 
 const KeyboardClipboards = () => {
   return (
-    <div>KeyboardClipboards</div>
+    <div></div>
   )
 }
 
