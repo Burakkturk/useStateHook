@@ -1,13 +1,19 @@
 import { useState } from "react";
 
 const FormObject = () => {
-  const [username, setUsername] = useState("deneme");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [username, setUsername] = useState("deneme");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
-  };
+  const [formData, setFormData] = useState({
+    username:"",
+    email:"",
+    password:"",
+  })
+
+  const { username, email, password} = formData
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -17,9 +23,7 @@ const FormObject = () => {
     email:${email}
     password:${password}
     `) 
-    setEmail("")
-    setPassword("")
-    setUsername("")
+
 };
   return (
     <div className="container mt-4">
@@ -28,7 +32,7 @@ const FormObject = () => {
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="username" className="form-label">
-            Hello,
+            Hello {}
           </label>
           <input
             type="text"
