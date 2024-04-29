@@ -1,88 +1,94 @@
-import { useState } from "react";
+import { useState } from "react"
 
 const FormObject = () => {
-  // const [username, setUsername] = useState("deneme");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-
   const [formData, setFormData] = useState({
-    username:"",
-    email:"",
-    password:"",
+    username: "",
+    email: "",
+    password: "",
   })
 
-  const { username, email, password} = formData
-
-  
+  //? Destr.
+  const { username, email, password } = formData
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
     alert(`
-    username:${username}
-    email:${email}
-    password:${password}
-    `) 
+      username:${username}
+      email:${email}
+      password:${password}
+    `)
 
-};
+    setFormData({
+      username: "",
+      email: "",
+      password: "",
+    })
+  }
+
+  const handleFormData = (e) => {
+    // console.log(e.target.value)
+    // console.log(e.target.name)
+    // console.log(e.target.id)
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
   return (
     <div className="container mt-4">
       <h2 className="text-center text-success">FORM OBJECT IN REACT</h2>
-
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="username" className="form-label">
-            Hello {}
+            Hello {username}
           </label>
           <input
             type="text"
             className="form-control"
             id="username"
             aria-describedby="emailHelp"
-            onChange={handleUsername}
+            //? OnChange event'ı input degeri her degistiginde tetiklenir. Biz de yazdıgımız event handler araciligi ile State'i guncelleyebilmis oluruz.
+            onChange={handleFormData}
             value={username}
+            name="username"
           />
         </div>
+
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1">
+          <label htmlFor="email" className="form-label">
             Email address: <span className="text-danger">{email}</span>
           </label>
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
+            id="email"
             aria-describedby="emailHelp"
-            placeholder="Enter email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleFormData}
             value={email}
+            name="email"
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">
+            Password
+          </label>
           <input
             type="password"
             className="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            id="password"
+            onChange={handleFormData}
             value={password}
+            name="password"
           />
         </div>
-        <div className="form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-          />
-        </div>
+
         <div className="text-center">
           <button type="submit" className="btn btn-success">
             Submit
-          </button>{" "}
+          </button>
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default FormObject;
+export default FormObject
